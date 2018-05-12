@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
+## NB: Breaking change:
+npm module `ngx-infinite-scroll` needs fixed: in `ngx-infinite-scroll.es5.js` - replace the following imports with `import { of, fromEvent } from 'rxjs';`:
+`import { of } from 'rxjs/observable/of';`
+`import { fromEvent } from 'rxjs/observable/fromEvent';`
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
