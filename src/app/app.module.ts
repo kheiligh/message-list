@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
-
+import { MomentModule } from 'ngx-moment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     MatCardModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MomentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

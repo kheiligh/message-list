@@ -10,7 +10,7 @@
                     <img src="http://message-list.appspot.com{{message.author.photoUrl}}" />
                 </div>
                 <mat-card-title>{{message.author.name}}</mat-card-title>
-                <mat-card-subtitle>{{message.updated | date:'fullDate' }}</mat-card-subtitle>
+                <mat-card-subtitle>{{message.updated | amTimeAgo }}</mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 {{message.content}}
