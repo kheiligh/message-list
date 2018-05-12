@@ -1,0 +1,21 @@
+<!-- <app-header></app-header> -->
+<app-navbar class="mat-elevation-z6"></app-navbar>
+<div class="main">
+    <div *ngIf="messageList && messageList.messages"
+    infiniteScroll [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+        <mat-card *ngFor="let message of messageList.messages" class="message_card">
+            <mat-card-header>
+                <div mat-card-avatar class="avatar_image">
+                    <img src="http://message-list.appspot.com{{message.author.photoUrl}}" />
+                </div>
+                <mat-card-title>{{message.author.name}}</mat-card-title>
+                <mat-card-subtitle>{{message.updated | date:'fullDate' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                {{message.content}}
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="loading" *ngIf="!messageList || loadingMore">Loading ... </div>
+</div>
