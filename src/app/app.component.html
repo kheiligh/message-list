@@ -6,7 +6,7 @@
     [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
         <mat-card class="message_card" *ngFor="let message of messageList.messages; let id=index"
         [@flyInOut]="message.state"
-        (swiperight)="startAnimation(message);removeMessage(id);">
+        (panright)="startAnimation(message);removeMessage(id);">
             <mat-card-header>
                 <div mat-card-avatar class="avatar_image">
                     <img src="http://message-list.appspot.com{{message.author.photoUrl}}" />
