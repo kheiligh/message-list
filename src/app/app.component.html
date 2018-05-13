@@ -4,7 +4,8 @@
     <div *ngIf="messageList && messageList.messages"
     infiniteScroll [infiniteScrollDistance]="1"
     [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
-        <mat-card *ngFor="let message of messageList.messages" class="message_card">
+        <mat-card class="message_card" *ngFor="let message of messageList.messages; let id=index"
+        (swiperight)="removeMessage(id)">
             <mat-card-header>
                 <div mat-card-avatar class="avatar_image">
                     <img src="http://message-list.appspot.com{{message.author.photoUrl}}" />
