@@ -57,8 +57,6 @@ export class AppComponent {
   }
 
   removeMessage(id: number, action) {
-    console.log(id);
-    console.log(this.messageList.messages[id]);
     this.messageList.messages.splice(id, 1);
   }
 }

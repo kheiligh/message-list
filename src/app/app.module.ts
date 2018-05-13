@@ -13,9 +13,14 @@ import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import * as Hammer from 'hammerjs';
 
 // allow user to select the text in the card, and DON'T BREAK SCROLLING
+// raise threshold for swipe
 delete Hammer.defaults.cssProps.userSelect;
 Hammer.defaults.touchAction = 'pan-y';
-
+export class HammerConfig extends HammerGestureConfig {
+  overrides = <any> {
+    'pan': { threshold: 80 }
+  };
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +41,10 @@ Hammer.defaults.touchAction = 'pan-y';
     MomentModule,
     ScrollDispatchModule
   ],
-  providers: [],
+  providers: [{
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: HammerConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
