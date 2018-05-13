@@ -4,4 +4,5 @@ export class Message {
     updated: string;
     id: number;
     author: Author;
+    state: any;
 }

@@ -1,19 +1,26 @@
 import { Component } from '@angular/core';
 import { MessagesService } from './services/messages.service';
-import { MessageList } from './models';
+import { MessageList, Message } from './models';
 import { DomSanitizer } from '@angular/platform-browser';
 
-// import { trigger, keyframes, animate, transition } from '@angular/animations';
-// import * as kf from './keyframes';
+import { trigger, keyframes, animate, transition, state, style } from '@angular/animations';
+import * as kf from './keyframes';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-  // animations: [
-  //   trigger('cardAnimator', [
-  //     transition('* => slideOutRight', animate(1000, keyframes(kf.slideOutRight)))
-  //   ])
-  // ]
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({transform: 'translateX(0)'})),
+      transition('void => *', [
+        style({transform: 'translateX(-100%)'}),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({transform: 'translateX(100%)'}))
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   title = 'app';
@@ -45,16 +52,13 @@ export class AppComponent {
     }
   }
 
-  // startAnimation(state) {
-  //   console.log(state);
-  //   if (!this.animationState) {
-  //     this.animationState = state;
-  //   }
-  // }
+  startAnimation(message: Message) {
+    message.state = 'void';
+  }
 
-  // resetAnimationState() {
-  //   this.animationState = '';
-  // }
+  resetAnimationState() {
+    this.animationState = '';
+  }
 
   removeMessage(id: number, action) {
     console.log(id);

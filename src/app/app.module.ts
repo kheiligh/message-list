@@ -12,12 +12,9 @@ import { AppComponent } from './app.component';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import * as Hammer from 'hammerjs';
 
-export class MyHammerConfig extends HammerGestureConfig {
-  overrides = <any>{
-    'swipe': { direction: Hammer.DIRECTION_ALL },
-    'pan': { direction: Hammer.DIRECTION_ALL}
-  };
-}
+// allow user to select the text in the card, and DON'T BREAK SCROLLING
+delete Hammer.defaults.cssProps.userSelect;
+Hammer.defaults.touchAction = 'pan-y';
 
 @NgModule({
   declarations: [
@@ -39,10 +36,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     MomentModule,
     ScrollDispatchModule
   ],
-  providers: [{
-    provide: HAMMER_GESTURE_CONFIG,
-    useClass: MyHammerConfig
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
