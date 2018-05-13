@@ -2,7 +2,7 @@
 <app-navbar class="mat-elevation-z6"></app-navbar>
 <div class="main">
     <div *ngIf="messageList && messageList.messages"
-    infiniteScroll [infiniteScrollDistance]="1"
+    infiniteScroll [infiniteScrollDistance]="1" class="flex_container"
     [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
         <mat-card class="message_card" *ngFor="let message of messageList.messages; let id=index"
         [@flyInOut]="message.state"
