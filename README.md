@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1. I went with this for speed to production as well as comfort level. I used several add ons as well:
 HammerJS for animation and transition actions
+
 Infinite Scroll for quickly handling the scolling container actions
+
 Moment for the angular pipe to show "X &lt;time&gt; ago" in the cards
 
 ## NB: Breaking change:
