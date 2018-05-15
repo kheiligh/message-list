@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MessagesService {
-  public messageUrl = 'http://message-list.appspot.com/messages?limit=100';
+  // This can be built into the environments[.prod].ts file if we have > 1 environment ever
+  public messageUrl = 'https://message-list.appspot.com/messages?limit=100';
   constructor(private http: HttpClient) {  }
 
   /**

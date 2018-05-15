@@ -22,7 +22,6 @@ export class AppComponent {
   title = 'app';
   loadingMore = false;
   messageList: MessageList = null;
-  animationState: string;
 
   constructor(private messageService: MessagesService, private sanitizer: DomSanitizer) {
     messageService.getMessages().subscribe(result => {
@@ -32,6 +31,8 @@ export class AppComponent {
       // this.messageList.messages.sort((messageA, messageB) => {
       //    return new Date(messageA.updated).getTime() - new Date(messageB.updated).getTime();
       // });
+    }, error => {
+      document.getElementsByClassName('loading')[0].innerHTML = `There was an error: ${error.message}`;
     });
   }
 
@@ -41,6 +42,7 @@ export class AppComponent {
       this.loadingMore = true;
       this.messageService.getMessages(this.messageList.pageToken).subscribe(result => {
         this.messageList.messages = this.messageList.messages.concat(result.messages);
+        // make sure to update these as well:
         this.messageList.pageToken = result.pageToken;
         this.messageList.count = result.count;
         this.loadingMore = false;
@@ -52,11 +54,7 @@ export class AppComponent {
     message.state = 'void';
   }
 
-  resetAnimationState() {
-    this.animationState = '';
-  }
-
-  removeMessage(id: number, action) {
+  removeMessage(id: number) {
     this.messageList.messages.splice(id, 1);
   }
 }
